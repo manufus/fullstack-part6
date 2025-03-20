@@ -33,8 +33,32 @@ const reducer = (state = initialState, action) => {
       )
     }
 
+    case 'NEW': {
+      return state.concat(action.payload)
+    }
+
     default:
       return state
+  }
+}
+
+export const vote = (id) => {
+  return {
+    type: 'VOTE',
+    payload: {
+      id,
+    },
+  }
+}
+
+export const newAnecdote = (content) => {
+  return {
+    type: 'NEW',
+    payload: {
+      content,
+      id: getId(),
+      votes: 0,
+    },
   }
 }
 
